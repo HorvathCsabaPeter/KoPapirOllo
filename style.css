@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(230, 255, 248);
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.rendezo{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main{
+    width: 400px;
+    height: 630px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(18, 255, 117, 0.555) ;
+    text-align: center;
+}
+
+h1, h2, p{
+    color: rgb(0, 184, 0);
+}
+
+p{
+    font-weight: bold;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.pirosP{
+    color: red;
+    text-shadow: 2px 0px 5px rgba(255, 0, 0, 0.74);
+}
+
+.seletedImg{
+    border: 3px solid red;
+}
