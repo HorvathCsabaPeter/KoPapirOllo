@@ -14,20 +14,21 @@
             <h1>Kő - Papír - Olló</h1>
             <h2>Válassz!</h2>
             <div class="imgContainer">
-                <img class="seletedImg" src="img/ko.png" alt="">
-                <img src="img/papir.png" alt="">
-                <img src="img/ollo.png" alt="">
+                <img id="koImg" onclick="play('ko')" src="img/ko.png" alt="">
+                <img id="papirImg" onclick="play('papir')" src="img/papir.png" alt="">
+                <img id="olloImg" onclick="play('ollo')" src="img/ollo.png" alt="">
             </div>
             <h2>Gép választása</h2>
-                <img src="img/ollo.png" alt="">
+                <img id="gepKep" src="img/ollo.png" alt="">
 
-            <h1>Eredmény: Te nyertél!</h1>
+            <h1 >Eredmény: <span id="nyertes">----</span>!</h1>
             <p>Te pontod</p>
-            <p class="pirosP">2</p>
+            <p id="tePont" class="pirosP">0</p>
             <p>Gép pontja</p>
-            <p class="pirosP">8</p>
+            <p id="gepPont" class="pirosP">0</p>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
