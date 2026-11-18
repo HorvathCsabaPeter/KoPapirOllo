@@ -1,7 +1,6 @@
 let userPoint = 0;
 let computerPoint = 0;
 
-
 function play(playerChoice) {
     let valszatsok = ["ko", "papir", "ollo"]
     let random = Math.floor(Math.random() * 3);
@@ -40,19 +39,22 @@ function play(playerChoice) {
 
 
     //Player Piros Kerítés
-    document.getElementById("koImg").classList = "";
-    document.getElementById("papirImg").classList = "";
-    document.getElementById("olloImg").classList = "";
+    document.getElementById("koImg").style.borderWidth = "0px"
+    document.getElementById("papirImg").style.borderWidth = "0px"
+    document.getElementById("olloImg").style.borderWidth = "0px"
     if (playerChoice == "ko") {
-        document.getElementById("koImg").classList = "seletedImg";
+        document.getElementById("koImg").style.borderWidth = "3px"
+
     } else if (playerChoice == "papir") {
-        document.getElementById("papirImg").classList = "seletedImg";
+        document.getElementById("papirImg").style.borderWidth = "3px"
+
     } else if (playerChoice == "ollo") {
-        document.getElementById("olloImg").classList = "seletedImg";
+        document.getElementById("olloImg").style.borderWidth = "3px"
+
     }
 
     //Pont ki rakása
     document.getElementById("tePont").innerHTML = userPoint
     document.getElementById("gepPont").innerHTML = computerPoint
 
-}
+}   
