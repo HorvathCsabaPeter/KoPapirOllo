@@ -2,6 +2,11 @@ let userPoint = 0;
 let computerPoint = 0;
 
 function play(playerChoice) {
+    if(userPoint >= 9 || computerPoint >= 9){
+        document.getElementById("tunes").style.display = "none";
+   
+    }else{
+ 
     let valszatsok = ["ko", "papir", "ollo"]
     let random = Math.floor(Math.random() * 3);
 
@@ -19,13 +24,7 @@ function play(playerChoice) {
 
     //logika
     document.getElementById("nyertes").style.color = "Green";
-    if (playerChoice == "ko" && computerChoice == "ollo") {
-        userPoint++;
-        document.getElementById("nyertes").innerHTML = "Te nyertél"
-    } else if (playerChoice == "papir" && computerChoice == "ko") {
-        userPoint++;
-        document.getElementById("nyertes").innerHTML = "Te nyertél"
-    } else if (playerChoice == "ollo" && computerChoice == "papir") {
+    if (playerChoice == "ko" && computerChoice == "ollo" || playerChoice == "papir" && computerChoice == "ko" || playerChoice == "ollo" && computerChoice == "papir") {
         userPoint++;
         document.getElementById("nyertes").innerHTML = "Te nyertél"
     } else if (playerChoice == computerChoice) {
@@ -53,8 +52,9 @@ function play(playerChoice) {
 
     }
 
+    
     //Pont ki rakása
     document.getElementById("tePont").innerHTML = userPoint
     document.getElementById("gepPont").innerHTML = computerPoint
-
+    }
 }   
