@@ -13,25 +13,25 @@
         <h1>Kő - Papír - Olló</h1>
         <h2>Válassz!</h2>
 
-        <img class="elso-kep"  src="./Images/ko.png" alt="" onclick="jatek('ko')">
-        <img src="./Images/papir.png" alt="" onclick="jatek('papir')">
-        <img src="./Images/ollo.png" alt="" onclick="jatek('ollo')">
+        <img id="ko" class="elso-kep"  src="./Images/ko.png" alt="" onclick="jatek('ko')" >
+        <img id="papir" src = "Images/papir.png" alt= "" onclick= "jatek('papir')">
+        <img id="ollo" src="./Images/ollo.png" alt="" onclick= "jatek('ollo')">
 
 
         <h2 class="gep-valasztasa">Gép Választása</h2>
         <div class="eredmenyKep">
         
-            <img class="ollo"    src="./Images/ollo.png" alt="">
+            <img class="ollo"    src="" alt="" id="eredmenyKep">
             
         </div>
 
-        <h1>Eredmény: Te nyertél!</h1>
+        <h1 id="eredmeny">Eredmény: Te nyertél!</h1>
 
         <p>Te pontod</p>
-        <p class="te-pontod">2</p>
+        <p class="te-pontod" id="userPointK">2</p>
 
         <p>Gép pontja</p>
-        <p>8</p>
+        <p id="computerpointK">8</p>
 
 
 
