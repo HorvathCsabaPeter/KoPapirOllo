@@ -52,6 +52,15 @@ img{
     display: block;
     width: 350px;
     height: 30px;
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.2s ease;
+
+}
+
+.bt:hover{
+    background-color: rgb(180, 180, 180);
 }
 
 .tunes{
@@ -63,6 +72,16 @@ img{
     height: 100%;
     align-items: center;
     justify-content: center;
-    display: flex;
+    display: none;
     flex-direction: column;
+}
+
+.KozepNyer button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.KozepNyer p{
+    margin: 0px;
+    margin-top: 5px;
 }

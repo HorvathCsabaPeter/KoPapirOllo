@@ -1,12 +1,28 @@
 let userPoint = 0;
 let computerPoint = 0;
 
+
+function resi() {
+    userPoint = 0;
+    computerPoint = 0;
+
+    document.getElementById("koImg").style.borderWidth = "0px"
+    document.getElementById("papirImg").style.borderWidth = "0px"
+    document.getElementById("olloImg").style.borderWidth = "0px"
+
+    document.getElementById("tunes").style.display = "block";
+    document.getElementById("nyertBlock").style.display = "none"
+
+    document.getElementById("tePont").innerHTML = userPoint
+    document.getElementById("gepPont").innerHTML = computerPoint
+
+    document.getElementById("nyertes").innerHTML = "----"
+    document.getElementById("nyertes").style.color = "Green";
+}
+
+
 function play(playerChoice) {
-    if(userPoint >= 9 || computerPoint >= 9){
-        document.getElementById("tunes").style.display = "none";
-   
-    }else{
- 
+
     let valszatsok = ["ko", "papir", "ollo"]
     let random = Math.floor(Math.random() * 3);
 
@@ -28,12 +44,12 @@ function play(playerChoice) {
         userPoint++;
         document.getElementById("nyertes").innerHTML = "Te nyertél"
     } else if (playerChoice == computerChoice) {
-        document.getElementById("nyertes").innerHTML ="Döntetlen"
+        document.getElementById("nyertes").innerHTML = "Döntetlen"
         document.getElementById("nyertes").style.color = "Orange";
     } else {
         computerPoint++;
         document.getElementById("nyertes").innerHTML = "Gép Nyert"
-          document.getElementById("nyertes").style.color = "Red";
+        document.getElementById("nyertes").style.color = "Red";
     }
 
 
@@ -52,9 +68,22 @@ function play(playerChoice) {
 
     }
 
-    
+
+    if (userPoint >= 10 || computerPoint >= 10) {
+        document.getElementById("tunes").style.display = "none";
+        document.getElementById("nyertBlock").style.display = "flex"
+        document.getElementById("tePontEnd").innerHTML = userPoint
+        document.getElementById("gepPontEnd").innerHTML = computerPoint
+        if (userPoint >= 10) {
+            document.getElementById("nyertesSpan").innerHTML = "Az ember"
+        }
+        if (computerPoint >= 10) {
+            document.getElementById("nyertesSpan").innerHTML = "A gép"
+        }
+    }
+
     //Pont ki rakása
     document.getElementById("tePont").innerHTML = userPoint
     document.getElementById("gepPont").innerHTML = computerPoint
-    }
+
 }   
