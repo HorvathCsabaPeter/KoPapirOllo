@@ -2,6 +2,30 @@ let userPoint = 0;
 let computerPoint = 0;
 
 
+function check(){
+    let hibaUzenet = "";
+    let emailhejes = false;
+    let email = document.getElementById("emailIp").value
+    let userName = document.getElementById("userIp").value
+
+    for(let i = 0; email.length < i; i++){
+        let vanKukac = false;
+        let vanPont = false;
+        if(email[i] == "@"){
+            vanKukac= true;
+        }
+        if(email[i] == "@"){
+            vanPont = true;
+        }
+    }
+
+    if(userName.length < 8 ){
+        hibaUzenet =+ "Minimum 8 karakternek kell lenie a felhasználónévnek!"
+    }
+}
+
+
+
 function resi() {
     userPoint = 0;
     computerPoint = 0;

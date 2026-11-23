@@ -64,7 +64,7 @@ img{
 }
 
 .tunes{
-    display: block;
+    display: none;
 }
 
 .KozepNyer{
@@ -84,4 +84,28 @@ img{
 .KozepNyer p{
     margin: 0px;
     margin-top: 5px;
+}
+
+
+
+
+.urlapBox{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.urlapBox input{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.urlapBox h1{
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+#hiba{
+    color: red;
 }
