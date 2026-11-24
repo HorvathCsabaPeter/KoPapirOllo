@@ -1,7 +1,14 @@
 let userPoint = 0;
 let computerPoint = 0;
+let userNaemff = "";
 
-
+const magyarAbece = [
+    "a", "á", "b", "c", "d", "e", "é",
+    "f", "g", "h", "i", "í", "j", "k", "l",
+    "m", "n", "o", "ó", "ö", "ő", "p", "q", "r",
+    "s", "t", "u", "ú", "ü", "ű", "v", "w",
+    "x", "y", "z"
+];
 
 function check() {
     let hibaUzenet = "";
@@ -13,6 +20,7 @@ function check() {
     let vanPont = false;
     let voltEkukac = false;
     let elobb = false;
+    let magyarAbeceBetu = false;
 
     for (let i = 0; email.length > i; i++) {
 
@@ -32,17 +40,26 @@ function check() {
 
     }
     if (!elobb) {
-        hibaUzenet += "Nem jó az email sorend<br>"
+        hibaUzenet += "Nem jó az email sorend!<br>"
     }
 
     if (userName.length < 8) {
         hibaUzenet += "Minimum 8 karakternek kell lenie a felhasználónévnek!<br>"
     }
+    for(let g = 0; userName.length > g; g++){
+        if(!magyarAbece.includes(userName[g].toLowerCase())){
+            magyarAbeceBetu = true;
+        }
+    }
+    if(magyarAbeceBetu){
+        hibaUzenet += "A felhasználónév karaterei nem megfelelőek!<br>"
+    }
 
     if (hibaUzenet == "") {
         document.getElementById("urlapBox").style.display = "none"
         document.getElementById("tunes").style.display = "block";
-        document.getElementById("userNameh1").innerHTML= `Szia ${userName}!`
+        document.getElementById("userNameh1").innerHTML = `Szia ${userName}!`
+        userNaemff = userName;
     }
 
     document.getElementById("hiba").innerHTML = hibaUzenet;
@@ -87,10 +104,10 @@ function play(playerChoice) {
 
 
     //logika
-    document.getElementById("nyertes").style.color = "Green";
+    document.getElementById("nyertes").style.color = "#00ffc8";
     if (playerChoice == "ko" && computerChoice == "ollo" || playerChoice == "papir" && computerChoice == "ko" || playerChoice == "ollo" && computerChoice == "papir") {
         userPoint++;
-        document.getElementById("nyertes").innerHTML = "Te nyertél"
+        document.getElementById("nyertes").innerHTML = `${userNaemff} nyert`
     } else if (playerChoice == computerChoice) {
         document.getElementById("nyertes").innerHTML = "Döntetlen"
         document.getElementById("nyertes").style.color = "Orange";
@@ -123,7 +140,7 @@ function play(playerChoice) {
         document.getElementById("tePontEnd").innerHTML = userPoint
         document.getElementById("gepPontEnd").innerHTML = computerPoint
         if (userPoint >= 10) {
-            document.getElementById("nyertesSpan").innerHTML = "Az ember"
+            document.getElementById("nyertesSpan").innerHTML = `${userNaemff}`
         }
         if (computerPoint >= 10) {
             document.getElementById("nyertesSpan").innerHTML = "A gép"
