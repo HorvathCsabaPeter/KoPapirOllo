@@ -2,26 +2,50 @@ let userPoint = 0;
 let computerPoint = 0;
 
 
-function check(){
+
+function check() {
     let hibaUzenet = "";
     let emailhejes = false;
     let email = document.getElementById("emailIp").value
     let userName = document.getElementById("userIp").value
 
-    for(let i = 0; email.length < i; i++){
-        let vanKukac = false;
-        let vanPont = false;
-        if(email[i] == "@"){
-            vanKukac= true;
+    let vanKukac = false;
+    let vanPont = false;
+    let voltEkukac = false;
+    let elobb = false;
+
+    for (let i = 0; email.length > i; i++) {
+
+        if (email[i] == "@") {
+            vanKukac = true;
+            voltEkukac = true
         }
-        if(email[i] == "@"){
+        if (email[i] == ".") {
             vanPont = true;
+            if (voltEkukac) {
+                elobb = true;
+            }
         }
+    }
+    if (!vanKukac && !vanPont) {
+        hibaUzenet += "Ez nem egy email!<br>"
+
+    }
+    if (!elobb) {
+        hibaUzenet += "Nem jó az email sorend<br>"
     }
 
-    if(userName.length < 8 ){
-        hibaUzenet =+ "Minimum 8 karakternek kell lenie a felhasználónévnek!"
+    if (userName.length < 8) {
+        hibaUzenet += "Minimum 8 karakternek kell lenie a felhasználónévnek!<br>"
     }
+
+    if (hibaUzenet == "") {
+        document.getElementById("urlapBox").style.display = "none"
+        document.getElementById("tunes").style.display = "block";
+        document.getElementById("userNameh1").innerHTML= `Szia ${userName}!`
+    }
+
+    document.getElementById("hiba").innerHTML = hibaUzenet;
 }
 
 

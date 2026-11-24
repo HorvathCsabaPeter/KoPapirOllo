@@ -13,12 +13,12 @@
     <div class="rendezo">
 
         <div class="main">
-            <div class="urlapBox">
+            <div id="urlapBox" class="urlapBox">
                 <h1>Reg!</h1>
                 <input id="emailIp" placeholder="parti@turr.hu" type="text">
                 <input id="userIp" placeholder="Név" maxlength="20" type="text">
                 <button onclick="check()">Mehet!</button>
-                <p id="hiba">dawdawdawdawdada</p>
+                <p id="hiba"></p>
             </div>
 
             <div id="nyertBlock" class="KozepNyer">
@@ -31,7 +31,7 @@
             </div>
 
             <div id="tunes" class="tunes">
-            <h1>Kő - Papír - Olló</h1>
+            <h1 id="userNameh1"></h1>
             <h2>Válassz!</h2>
             <div class="imgContainer">
                 <img id="koImg" onclick="play('ko')" class="seletedImg" src="img/ko.png" alt="">
