@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KoPairOllo</title>
+    <title>Kő Papír Olló</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,44 +14,99 @@
     <div class="rendezo">
 
         <div class="main">
+
+            
             <div id="urlapBox" class="urlapBox">
-                <img class="regImg" src="img/13881.jpg" alt="">
-                <h1>Reg!</h1>
-                <input id="emailIp" placeholder="parti@turr.hu" type="text">
-                <input id="userIp" placeholder="Név" maxlength="20" type="text">
+
+                
+                <h1>Regisztráció</h1>
+
+                <input
+                    id="emailIp"
+                    placeholder="csaba@turr.hu"
+                    type="text"
+                >
+
+                <input
+                    id="userIp"
+                    placeholder="Név"
+                    type="text"
+                    minlength="8"
+                    maxlength="20"
+                >
+
                 <button onclick="check()">Mehet!</button>
+
                 <p id="hiba"></p>
+
             </div>
 
+
+           
             <div id="nyertBlock" class="KozepNyer">
-                <h1 class="vegsoH1"><span id="nyertesSpan"></span> nyert!</h1>
-                <button class="bt" onclick="resi()">Resi</button>
-                <p>Te pontod</p>
-                <p id="tePontEnd" class="pirosP">0</p>
+                <h1 class="vegsoH1">Nyertes: <span id="nyertesSpan"></span></h1>
+                <p>Te: <span id="tePontEnd">0</span> | Gép: <span id="gepPontEnd">0</span></p>
+                <button type="button" class="bt" onclick="resi()">Újrainditas</button>
+            </div>
+
+
+           
+            <div id="tunes" class="tunes" style="display: none;">
+
+                
+
+                <h2>Válassz!</h2>
+
+                <div class="imgContainer">
+
+                    <img
+                        id="koImg"
+                        onclick="play('ko')"
+                        class="seletedImg"
+                        src="img/ko.png"
+                        alt="Kő"
+                    >
+
+                    <img
+                        id="papirImg"
+                        onclick="play('papir')"
+                        class="seletedImg"
+                        src="img/papir.png"
+                        alt="Papír"
+                    >
+
+                    <img
+                        id="olloImg"
+                        onclick="play('ollo')"
+                        class="seletedImg"
+                        src="img/ollo.png"
+                        alt="Olló"
+                    >
+
+                </div>
+
+                <h2>Gép választása</h2>
+
+                <img id="gepKep" src="img/ollo.png" alt="Gép választása">
+
+                <h3>
+                    
+                    <span id="nyertes"></span>
+                </h3>
+
+                <p id="userNameh1"> pontod</p>
+                <p id="tePont" class="pirosP">0</p>
+
                 <p>Gép pontja</p>
-                <p id="gepPontEnd" class="pirosP">0</p>
+                <p id="gepPont" class="pirosP">0</p>
+
             </div>
 
-            <div id="tunes" class="tunes">
-            <h1 id="userNameh1"></h1>
-            <h2>Válassz!</h2>
-            <div class="imgContainer">
-                <img id="koImg" onclick="play('ko')" class="seletedImg" src="img/ko.png" alt="">
-                <img id="papirImg" onclick="play('papir')" class="seletedImg" src="img/papir.png" alt="">
-                <img id="olloImg" onclick="play('ollo')" class="seletedImg" src="img/ollo.png" alt="">
-            </div>
-            <h2>Gép választása</h2>
-            <img id="gepKep" src="img/ollo.png" alt="">
-
-            <h3>Eredmény: <span id="nyertes">----</span>!</h3>
-            <p>Te pontod</p>
-            <p id="tePont" class="pirosP">0</p>
-            <p>Gép pontja</p>
-            <p id="gepPont" class="pirosP">0</p>
-            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
-</body>
 
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
 </html>

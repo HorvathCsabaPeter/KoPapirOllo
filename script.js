@@ -2,7 +2,7 @@ let userPoint = 0;
 let computerPoint = 0;
 let userNaemff = "";
 
-const magyarAbece = [
+const magyarABC = [
     "a", "á", "b", "c", "d", "e", "é",
     "f", "g", "h", "i", "í", "j", "k", "l",
     "m", "n", "o", "ó", "ö", "ő", "p", "q", "r",
@@ -12,143 +12,131 @@ const magyarAbece = [
 
 function check() {
     let hibaUzenet = "";
-    let emailhejes = false;
-    let email = document.getElementById("emailIp").value
-    let userName = document.getElementById("userIp").value
+    let email = document.getElementById("emailIp").value;
+    let userName = document.getElementById("userIp").value;
 
-    let vanKukac = false;
-    let vanPont = false;
-    let voltEkukac = false;
-    let elobb = false;
+    let kukacHelye = -1;
+    let pontHelye = -1;
     let magyarAbeceBetu = false;
 
-    for (let i = 0; email.length > i; i++) {
-
+    for (let i = 0; i < email.length; i++) {
         if (email[i] == "@") {
-            vanKukac = true;
-            voltEkukac = true
+            kukacHelye = i;
         }
         if (email[i] == ".") {
-            vanPont = true;
-            if (voltEkukac) {
-                elobb = true;
-            }
+            pontHelye = i;
         }
     }
-    if (!vanKukac && !vanPont) {
-        hibaUzenet += "Ez nem egy email!<br>"
 
-    }
-    if (!elobb) {
-        hibaUzenet += "Nem jó az email sorend!<br>"
+    if (kukacHelye == -1 || pontHelye == -1) {
+        hibaUzenet += "Ez nem egy email!<br>";
     }
 
-    if (userName.length < 8) {
-        hibaUzenet += "Minimum 8 karakternek kell lenie a felhasználónévnek!<br>"
+    if (pontHelye < kukacHelye || pontHelye == kukacHelye + 1) {
+        hibaUzenet += "Nem jó az email sorrend!<br>";
     }
-    for(let g = 0; userName.length > g; g++){
-        if(!magyarAbece.includes(userName[g].toLowerCase())){
+
+    if (userName.length < 8 || userName.length > 20) {
+        hibaUzenet += "A felhasználónév 8-20 karakter lehet!<br>";
+    }
+
+    for (let g = 0; g < userName.length; g++) {
+        if (!magyarABC.includes(userName[g].toLowerCase())) {
             magyarAbeceBetu = true;
         }
     }
-    if(magyarAbeceBetu){
-        hibaUzenet += "A felhasználónév karaterei nem megfelelőek!<br>"
+
+    if (magyarAbeceBetu) {
+        hibaUzenet += "A felhasználónév karakterei nem megfelelőek!<br>";
     }
 
     if (hibaUzenet == "") {
-        document.getElementById("urlapBox").style.display = "none"
+        document.getElementById("urlapBox").style.display = "none";
         document.getElementById("tunes").style.display = "block";
-        document.getElementById("userNameh1").innerHTML = `Szia ${userName}!`
+        document.getElementById("userNameh1").innerHTML = userName + " Pontja";
         userNaemff = userName;
     }
 
     document.getElementById("hiba").innerHTML = hibaUzenet;
 }
 
-
-
 function resi() {
     userPoint = 0;
     computerPoint = 0;
 
-    document.getElementById("koImg").style.borderWidth = "0px"
-    document.getElementById("papirImg").style.borderWidth = "0px"
-    document.getElementById("olloImg").style.borderWidth = "0px"
+    document.getElementById("koImg").style.borderWidth = "0px";
+    document.getElementById("papirImg").style.borderWidth = "0px";
+    document.getElementById("olloImg").style.borderWidth = "0px";
 
     document.getElementById("tunes").style.display = "block";
-    document.getElementById("nyertBlock").style.display = "none"
+    document.getElementById("nyertBlock").style.display = "none";
 
-    document.getElementById("tePont").innerHTML = userPoint
-    document.getElementById("gepPont").innerHTML = computerPoint
+    document.getElementById("tePont").innerHTML = userPoint;
+    document.getElementById("gepPont").innerHTML = computerPoint;
 
-    document.getElementById("nyertes").innerHTML = "----"
-    document.getElementById("nyertes").style.color = "Green";
+    document.getElementById("nyertes").innerHTML = "----";
+    document.getElementById("nyertes").style.color = "White";
 }
 
-
 function play(playerChoice) {
-
-    let valszatsok = ["ko", "papir", "ollo"]
+    let valszatsok = ["ko", "papir", "ollo"];
     let random = Math.floor(Math.random() * 3);
+    let computerChoice = valszatsok[random];
 
-    let computerChoice = valszatsok[random]
-
-    //Gép Kép Kirakása
     if (computerChoice == "ko") {
-        document.getElementById("gepKep").src = "img/ko.png"
+        document.getElementById("gepKep").src = "img/ko.png";
     } else if (computerChoice == "papir") {
-        document.getElementById("gepKep").src = "img/papir.png"
+        document.getElementById("gepKep").src = "img/papir.png";
     } else if (computerChoice == "ollo") {
-        document.getElementById("gepKep").src = "img/ollo.png"
+        document.getElementById("gepKep").src = "img/ollo.png";
     }
 
+    document.getElementById("nyertes").style.color = "#ffffff";
 
-    //logika
-    document.getElementById("nyertes").style.color = "#00ffc8";
-    if (playerChoice == "ko" && computerChoice == "ollo" || playerChoice == "papir" && computerChoice == "ko" || playerChoice == "ollo" && computerChoice == "papir") {
+    if (
+        playerChoice == "ko" && computerChoice == "ollo" ||
+        playerChoice == "papir" && computerChoice == "ko" ||
+        playerChoice == "ollo" && computerChoice == "papir"
+    ) {
         userPoint++;
-        document.getElementById("nyertes").innerHTML = `${userNaemff} nyert`
+        document.getElementById("nyertes").innerHTML = `${userNaemff} nyert`;
     } else if (playerChoice == computerChoice) {
-        document.getElementById("nyertes").innerHTML = "Döntetlen"
-        document.getElementById("nyertes").style.color = "Orange";
+        document.getElementById("nyertes").innerHTML = "Döntetlen";
+        document.getElementById("nyertes").style.color = "White";
     } else {
         computerPoint++;
-        document.getElementById("nyertes").innerHTML = "Gép Nyert"
-        document.getElementById("nyertes").style.color = "Red";
+        document.getElementById("nyertes").innerHTML = "Gép Nyert";
+        document.getElementById("nyertes").style.color = "White";
     }
 
+    document.getElementById("koImg").style.borderWidth = "0px";
+    document.getElementById("papirImg").style.borderWidth = "0px";
+    document.getElementById("olloImg").style.borderWidth = "0px";
 
-    //Player Piros Kerítés
-    document.getElementById("koImg").style.borderWidth = "0px"
-    document.getElementById("papirImg").style.borderWidth = "0px"
-    document.getElementById("olloImg").style.borderWidth = "0px"
     if (playerChoice == "ko") {
-        document.getElementById("koImg").style.borderWidth = "3px"
-
+        document.getElementById("koImg").style.borderWidth = "3px";
     } else if (playerChoice == "papir") {
-        document.getElementById("papirImg").style.borderWidth = "3px"
-
+        document.getElementById("papirImg").style.borderWidth = "3px";
     } else if (playerChoice == "ollo") {
-        document.getElementById("olloImg").style.borderWidth = "3px"
-
+        document.getElementById("olloImg").style.borderWidth = "3px";
     }
 
+    document.getElementById("tePont").innerHTML = userPoint;
+    document.getElementById("gepPont").innerHTML = computerPoint;
 
     if (userPoint >= 10 || computerPoint >= 10) {
         document.getElementById("tunes").style.display = "none";
-        document.getElementById("nyertBlock").style.display = "flex"
-        document.getElementById("tePontEnd").innerHTML = userPoint
-        document.getElementById("gepPontEnd").innerHTML = computerPoint
+        document.getElementById("nyertBlock").style.display = "flex";
+
+        document.getElementById("tePontEnd").innerHTML = userPoint;
+        document.getElementById("gepPontEnd").innerHTML = computerPoint;
+
         if (userPoint >= 10) {
-            document.getElementById("nyertesSpan").innerHTML = `${userNaemff}`
+            document.getElementById("nyertesSpan").innerHTML = `${userNaemff}`;
         }
+
         if (computerPoint >= 10) {
-            document.getElementById("nyertesSpan").innerHTML = "A gép"
+            document.getElementById("nyertesSpan").innerHTML = "A gép";
         }
     }
-
-    //Pont ki rakása
-    document.getElementById("tePont").innerHTML = userPoint
-    document.getElementById("gepPont").innerHTML = computerPoint
-
-}   
+}
